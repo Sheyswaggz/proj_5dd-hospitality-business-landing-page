@@ -1,0 +1,31 @@
+{
+  "name": "hospitality-business-landing-page",
+  "version": "1.0.0",
+  "description": "A modern landing page for hospitality businesses with optimized performance and accessibility",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{js,css,html,json,md}\""
+  },
+  "keywords": [
+    "hospitality",
+    "landing-page",
+    "business",
+    "static-site",
+    "vite"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.21",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "@eslint/js": "^9.17.0",
+    "globals": "^15.14.0"
+  }
+}
