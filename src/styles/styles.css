@@ -33,6 +33,9 @@
 /* Services Section Styles - Card grid and reveal animations */
 @import './services.css';
 
+/* Business Information Section Styles - Contact details and maps */
+@import './business-info.css';
+
 /* Animation Styles - Interactions and Transitions */
 @import './animations.css';
 
