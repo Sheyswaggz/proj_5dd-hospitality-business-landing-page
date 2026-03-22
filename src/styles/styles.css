@@ -1,5 +1,450 @@
-/*
- * styles.css
- * Placeholder CSS file - will be fully implemented in the next task
- * This file is linked from index.html to ensure the link tag doesn't break during development.
- */
+/* ============================================
+   Main Stylesheet - Entry Point
+   ============================================
+   Hospitality Business Landing Page
+   Mobile-First Responsive CSS Architecture
+   ============================================ */
+
+/* ============================================
+   CSS Module Imports
+   ============================================
+   Import order matters:
+   1. Base - Resets, typography, custom properties
+   2. Layout - Grid and Flexbox systems
+   3. Components - Reusable UI elements
+   4. Animations - Keyframes, transitions, micro-interactions
+   ============================================ */
+
+/* Base Styles - Foundation */
+@import './base.css';
+
+/* Layout Styles - Grid and Flexbox */
+@import './layout.css';
+
+/* Component Styles - Reusable Elements */
+@import './components.css';
+
+/* Animation Styles - Interactions and Transitions */
+@import './animations.css';
+
+/* ============================================
+   Global Overrides & Utilities
+   ============================================
+   Additional utility classes and global styles
+   that don't fit into other modules
+   ============================================ */
+
+/* Container Max Width Override */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+}
+
+/* Full Width Section */
+.section-full {
+  width: 100%;
+}
+
+/* Section Spacing */
+section {
+  position: relative;
+}
+
+section + section {
+  margin-top: 0;
+}
+
+/* Smooth Scroll Offset for Sticky Header */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* ============================================
+   Design System Enhancements
+   ============================================ */
+
+/* Custom Scrollbar for Webkit Browsers */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-300) var(--color-neutral-100);
+}
+
+/* Text Selection Enhancement */
+::selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-text-primary);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   Utility Classes - Display
+   ============================================ */
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden-tablet {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+/* ============================================
+   Utility Classes - Borders
+   ============================================ */
+.border {
+  border: 1px solid var(--color-border);
+}
+
+.border-top {
+  border-top: 1px solid var(--color-border);
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.border-left {
+  border-left: 1px solid var(--color-border);
+}
+
+.border-right {
+  border-right: 1px solid var(--color-border);
+}
+
+.rounded {
+  border-radius: var(--radius-md);
+}
+
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.rounded-xl {
+  border-radius: var(--radius-xl);
+}
+
+.rounded-full {
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   Utility Classes - Shadows
+   ============================================ */
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.shadow-none {
+  box-shadow: none;
+}
+
+/* ============================================
+   Utility Classes - Background
+   ============================================ */
+.bg-primary {
+  background-color: var(--color-primary-600);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.bg-neutral-50 {
+  background-color: var(--color-neutral-50);
+}
+
+/* ============================================
+   Utility Classes - Text Color
+   ============================================ */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.text-accent {
+  color: var(--color-primary-600);
+}
+
+.text-white {
+  color: white;
+}
+
+/* ============================================
+   Utility Classes - Font Weight
+   ============================================ */
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   Utility Classes - Line Height
+   ============================================ */
+.leading-tight {
+  line-height: var(--line-height-tight);
+}
+
+.leading-snug {
+  line-height: var(--line-height-snug);
+}
+
+.leading-normal {
+  line-height: var(--line-height-normal);
+}
+
+.leading-relaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+.leading-loose {
+  line-height: var(--line-height-loose);
+}
+
+/* ============================================
+   Utility Classes - Opacity
+   ============================================ */
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-75 {
+  opacity: 0.75;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+/* ============================================
+   Utility Classes - Pointer Events
+   ============================================ */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
+/* ============================================
+   Utility Classes - Cursor
+   ============================================ */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Print Optimizations
+   ============================================ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  header[role='banner'],
+  footer[role='contentinfo'] {
+    position: static;
+  }
+
+  .btn,
+  button {
+    border: 1px solid black !important;
+  }
+}
+
+/* ============================================
+   High Contrast Mode Support
+   ============================================ */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary-600: hsl(25 100% 40%);
+    --color-text-primary: hsl(0 0% 0%);
+    --color-border: hsl(0 0% 30%);
+  }
+
+  .btn-primary {
+    border-width: 3px;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  img {
+    opacity: 0.9;
+  }
+}
+
+/* ============================================
+   Focus Indicators Enhancement
+   ============================================ */
+:focus-visible {
+  outline: 3px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Loading State for Images
+   ============================================ */
+img[loading='lazy'] {
+  background-color: var(--color-neutral-100);
+}
+
+/* ============================================
+   Aspect Ratio for Images
+   ============================================ */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* ============================================
+   Form Validation States
+   ============================================ */
+input:user-invalid,
+textarea:user-invalid,
+select:user-invalid {
+  border-color: var(--color-error);
+}
+
+input:user-valid,
+textarea:user-valid,
+select:user-valid {
+  border-color: var(--color-success);
+}
+
+/* ============================================
+   Clearfix Utility
+   ============================================ */
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* ============================================
+   Truncate Text
+   ============================================ */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   End of Main Stylesheet
+   ============================================ */
