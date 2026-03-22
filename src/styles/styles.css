@@ -30,6 +30,9 @@
 /* Hero Section Styles - Split-screen layout and CTA */
 @import './hero.css';
 
+/* Services Section Styles - Card grid and reveal animations */
+@import './services.css';
+
 /* Animation Styles - Interactions and Transitions */
 @import './animations.css';
 
