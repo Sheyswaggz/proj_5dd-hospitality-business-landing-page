@@ -1,0 +1,436 @@
+/* ============================================
+   Base CSS - Foundation Styles
+   ============================================
+   Modern CSS reset, typography scale, custom properties,
+   and foundational styles for hospitality landing page
+   ============================================ */
+
+/* ============================================
+   CSS Custom Properties - Design Tokens
+   ============================================ */
+:root {
+  /* Color Palette - Warm, Trustworthy Hospitality Colors */
+  --color-primary-50: hsl(25 100% 97%);
+  --color-primary-100: hsl(25 95% 92%);
+  --color-primary-200: hsl(25 90% 85%);
+  --color-primary-300: hsl(25 85% 75%);
+  --color-primary-400: hsl(25 80% 65%);
+  --color-primary-500: hsl(25 75% 55%);
+  --color-primary-600: hsl(25 70% 45%);
+  --color-primary-700: hsl(25 65% 35%);
+  --color-primary-800: hsl(25 60% 25%);
+  --color-primary-900: hsl(25 55% 15%);
+
+  /* Neutral Colors - Warm Grays */
+  --color-neutral-50: hsl(30 20% 98%);
+  --color-neutral-100: hsl(30 15% 95%);
+  --color-neutral-200: hsl(30 12% 90%);
+  --color-neutral-300: hsl(30 10% 80%);
+  --color-neutral-400: hsl(30 8% 65%);
+  --color-neutral-500: hsl(30 6% 50%);
+  --color-neutral-600: hsl(30 8% 40%);
+  --color-neutral-700: hsl(30 10% 30%);
+  --color-neutral-800: hsl(30 12% 20%);
+  --color-neutral-900: hsl(30 15% 10%);
+
+  /* Semantic Colors */
+  --color-background: var(--color-neutral-50);
+  --color-surface: hsl(0 0% 100%);
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-tertiary: var(--color-neutral-500);
+  --color-border: var(--color-neutral-200);
+  --color-divider: var(--color-neutral-100);
+
+  /* Accent Colors */
+  --color-accent-warm: hsl(15 85% 55%);
+  --color-accent-cool: hsl(200 75% 55%);
+  --color-success: hsl(145 65% 45%);
+  --color-error: hsl(0 70% 55%);
+  --color-warning: hsl(40 90% 55%);
+
+  /* Typography Scale - Fluid Responsive */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-size-md: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+  --font-size-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --font-size-xl: clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  --font-size-2xl: clamp(2rem, 1.75rem + 1.25vw, 3rem);
+  --font-size-3xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+
+  /* Font Families - System Font Stack */
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-heading: 'Georgia', 'Times New Roman', serif;
+  --font-family-mono: 'SF Mono', 'Consolas', 'Liberation Mono', monospace;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Spacing Scale - Fluid Responsive */
+  --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);
+  --space-md: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
+  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --space-2xl: clamp(3rem, 2rem + 5vw, 6rem);
+  --space-3xl: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-fixed: 1200;
+  --z-modal-backdrop: 1300;
+  --z-modal: 1400;
+  --z-popover: 1500;
+  --z-tooltip: 1600;
+}
+
+/* ============================================
+   Modern CSS Reset
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+}
+
+/* ============================================
+   Typography Base Styles
+   ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+h5 {
+  font-size: var(--font-size-md);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  line-height: var(--line-height-relaxed);
+}
+
+a {
+  color: var(--color-primary-600);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+}
+
+strong,
+b {
+  font-weight: var(--font-weight-bold);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--font-size-sm);
+}
+
+/* ============================================
+   List Styles
+   ============================================ */
+ul,
+ol {
+  list-style: none;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* ============================================
+   Media Elements
+   ============================================ */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+}
+
+/* ============================================
+   Form Elements Base Styles
+   ============================================ */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px hsla(25, 75%, 55%, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ============================================
+   Accessibility Features
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary-600);
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  text-decoration: none;
+  z-index: var(--z-tooltip);
+  border-radius: 0 0 var(--radius-md) 0;
+  font-weight: var(--font-weight-semibold);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   Selection Styles
+   ============================================ */
+::selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-text-primary);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   Scrollbar Styles
+   ============================================ */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-400);
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+  }
+
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}

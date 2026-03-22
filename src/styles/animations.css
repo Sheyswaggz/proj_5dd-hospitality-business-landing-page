@@ -1,0 +1,569 @@
+/* ============================================
+   Animation Styles
+   ============================================
+   Scroll-triggered reveals, button interactions, micro-animations,
+   and loading states with accessibility support
+   ============================================ */
+
+/* ============================================
+   Scroll-Triggered Reveal Base Classes
+   ============================================
+   Elements are visible by default (opacity: 1) for accessibility.
+   JavaScript adds .hidden class on initialization, then removes it
+   to trigger animations. This ensures content is accessible if JS fails.
+   ============================================ */
+[data-reveal] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+[data-reveal].hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+[data-reveal].reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger timing for sequential reveals */
+[data-reveal]:nth-child(1).reveal-visible {
+  transition-delay: 0ms;
+}
+
+[data-reveal]:nth-child(2).reveal-visible {
+  transition-delay: 150ms;
+}
+
+[data-reveal]:nth-child(3).reveal-visible {
+  transition-delay: 300ms;
+}
+
+[data-reveal]:nth-child(4).reveal-visible {
+  transition-delay: 450ms;
+}
+
+[data-reveal]:nth-child(5).reveal-visible {
+  transition-delay: 600ms;
+}
+
+[data-reveal]:nth-child(6).reveal-visible {
+  transition-delay: 750ms;
+}
+
+/* ============================================
+   Keyframe Animations - Scroll Reveals
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   Animation Utility Classes
+   ============================================ */
+.animate-fade-in {
+  animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--transition-slow) ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown var(--transition-slow) ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft var(--transition-slow) ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight var(--transition-slow) ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-slow) ease-out;
+}
+
+/* ============================================
+   Button Morphing Interactions
+   ============================================ */
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-500-rgb, 191, 110, 61), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--color-primary-500-rgb, 191, 110, 61), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-500-rgb, 191, 110, 61), 0);
+  }
+}
+
+.btn-pulse {
+  animation: buttonPulse 2s infinite;
+}
+
+/* Button hover effect - glow */
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(191, 110, 61, 0.4), var(--shadow-lg);
+}
+
+/* Button active state */
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Button loading state animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-submit.loading {
+  pointer-events: none;
+  position: relative;
+}
+
+.btn-submit.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Button success state */
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.btn-submit.success {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+/* ============================================
+   Micro-Animations - Hover Effects
+   ============================================ */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hover-grow {
+  transition: transform var(--transition-base);
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-base);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(191, 110, 61, 0.3);
+}
+
+/* ============================================
+   Image Hover Effects
+   ============================================ */
+.image-zoom {
+  overflow: hidden;
+}
+
+.image-zoom img {
+  transition: transform var(--transition-slow);
+}
+
+.image-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   Skeleton Loading States
+   ============================================ */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-200) 0%,
+    var(--color-neutral-100) 20%,
+    var(--color-neutral-200) 40%,
+    var(--color-neutral-200) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s linear infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-heading {
+  height: 2em;
+  margin-bottom: 1em;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-lg);
+}
+
+.skeleton-card {
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================
+   Loading Spinner
+   ============================================ */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-neutral-200);
+  border-top-color: var(--color-primary-600);
+  border-radius: 50%;
+  animation: rotate 0.8s linear infinite;
+}
+
+.spinner-sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.spinner-lg {
+  width: 60px;
+  height: 60px;
+  border-width: 6px;
+}
+
+/* ============================================
+   Fade Transitions
+   ============================================ */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity var(--transition-base);
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+/* ============================================
+   Slide Transitions
+   ============================================ */
+.slide-up-enter {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.slide-up-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-up-exit-active {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+/* ============================================
+   Progress Bar Animation
+   ============================================ */
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--color-primary-600);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+.progress-bar-indeterminate {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-indeterminate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  background-color: var(--color-primary-600);
+  animation: indeterminate 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ============================================
+   Pulsing Animation
+   ============================================ */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================
+   Bounce Animation
+   ============================================ */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* ============================================
+   Accessibility - Reduced Motion Support
+   ============================================
+   Disable all animations for users who prefer reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal].hidden {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--color-neutral-200);
+  }
+
+  .spinner {
+    animation: none;
+    border-top-color: var(--color-primary-600);
+  }
+
+  .btn-pulse {
+    animation: none;
+  }
+}
+
+/* ============================================
+   Focus Animation
+   ============================================ */
+@keyframes focusRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(191, 110, 61, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(191, 110, 61, 0);
+  }
+}
+
+:focus-visible {
+  animation: focusRing 0.3s ease-out;
+}
+
+/* ============================================
+   Parallax Layers (Subtle)
+   ============================================ */
+.parallax-layer {
+  transition: transform 0.3s ease-out;
+}
+
+.parallax-layer[data-speed='slow'] {
+  transform: translateY(calc(var(--scroll-y, 0) * 0.5px));
+}
+
+.parallax-layer[data-speed='medium'] {
+  transform: translateY(calc(var(--scroll-y, 0) * 0.3px));
+}
+
+.parallax-layer[data-speed='fast'] {
+  transform: translateY(calc(var(--scroll-y, 0) * 0.1px));
+}
+
+/* ============================================
+   Entrance Delays
+   ============================================ */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
