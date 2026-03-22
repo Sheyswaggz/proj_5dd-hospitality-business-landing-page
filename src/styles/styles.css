@@ -24,6 +24,12 @@
 /* Component Styles - Reusable Elements */
 @import './components.css';
 
+/* Button Styles - Enhanced button interactions */
+@import './buttons.css';
+
+/* Hero Section Styles - Split-screen layout and CTA */
+@import './hero.css';
+
 /* Animation Styles - Interactions and Transitions */
 @import './animations.css';
 
