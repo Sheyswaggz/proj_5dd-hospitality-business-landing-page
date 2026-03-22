@@ -5,6 +5,8 @@
  */
 
 import initHero from './hero.js';
+import initServices from './services.js';
+import initScrollAnimations from './scroll-animations.js';
 
 /**
  * Initialize application
@@ -14,6 +16,12 @@ function initApp() {
 
   // Initialize hero section functionality
   initHero();
+
+  // Initialize services section functionality
+  initServices();
+
+  // Initialize scroll-triggered reveal animations
+  initScrollAnimations();
 
   // Initialize scroll reveal animations for other sections
   initScrollRevealAnimations();
