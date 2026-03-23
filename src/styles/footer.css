@@ -1,0 +1,461 @@
+/* ============================================
+   Footer Styles
+   ============================================
+   Responsive footer with navigation, social media,
+   contact information, and legal links
+   ============================================ */
+
+/* ============================================
+   Footer Container & Base Styles
+   ============================================ */
+footer[role='contentinfo'] {
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-xl);
+  margin-top: var(--space-3xl);
+  border-top: 1px solid var(--color-neutral-800);
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+}
+
+/* ============================================
+   Footer Content Grid
+   ============================================ */
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: var(--space-2xl);
+  }
+}
+
+/* ============================================
+   Footer Section Base Styles
+   ============================================ */
+.footer-section h4 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: white;
+  margin-bottom: var(--space-md);
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-tight);
+}
+
+.footer-section p {
+  color: var(--color-neutral-300);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+  margin-bottom: 0;
+}
+
+.footer-section ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  line-height: var(--line-height-relaxed);
+}
+
+.footer-section a {
+  color: var(--color-neutral-300);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  font-size: var(--font-size-base);
+  display: inline-block;
+}
+
+.footer-section a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* ============================================
+   Footer About Section
+   ============================================ */
+.footer-about p {
+  margin-bottom: var(--space-lg);
+  max-width: 400px;
+}
+
+/* ============================================
+   Social Media Links
+   ============================================ */
+.footer-social {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-neutral-800);
+  border-radius: var(--radius-md);
+  color: var(--color-neutral-300);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  font-size: var(--font-size-lg);
+  border: 1px solid transparent;
+}
+
+.social-link:hover {
+  background-color: var(--color-primary-600);
+  color: white;
+  transform: translateY(-2px);
+  border-color: var(--color-primary-500);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.social-link:active {
+  transform: translateY(0);
+}
+
+.social-link:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Individual social media platform colors (optional enhancement) */
+.social-link[data-social='facebook']:hover {
+  background-color: #1877f2;
+  border-color: #1877f2;
+}
+
+.social-link[data-social='twitter']:hover {
+  background-color: #1da1f2;
+  border-color: #1da1f2;
+}
+
+.social-link[data-social='instagram']:hover {
+  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  border-color: #dd2a7b;
+}
+
+.social-link[data-social='linkedin']:hover {
+  background-color: #0a66c2;
+  border-color: #0a66c2;
+}
+
+/* ============================================
+   Footer Navigation
+   ============================================ */
+.footer-links nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links a {
+  position: relative;
+  padding-left: var(--space-sm);
+}
+
+.footer-links a::before {
+  content: '\203A';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-500);
+  font-weight: var(--font-weight-bold);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all var(--transition-fast);
+}
+
+.footer-links a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================
+   Footer Services List
+   ============================================ */
+.footer-services ul li {
+  color: var(--color-neutral-300);
+  font-size: var(--font-size-base);
+  position: relative;
+  padding-left: var(--space-md);
+}
+
+.footer-services ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary-500);
+  border-radius: 50%;
+}
+
+/* ============================================
+   Footer Contact Information
+   ============================================ */
+.footer-contact address {
+  font-style: normal;
+  color: var(--color-neutral-300);
+  line-height: var(--line-height-relaxed);
+}
+
+.footer-contact-item {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  margin-bottom: var(--space-md);
+}
+
+.footer-contact-item:last-child {
+  margin-bottom: 0;
+}
+
+.footer-contact-item i {
+  color: var(--color-primary-500);
+  font-size: var(--font-size-base);
+  min-width: 20px;
+  margin-top: 2px;
+}
+
+.footer-contact-item a {
+  color: var(--color-neutral-300);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+}
+
+.footer-contact-item a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ============================================
+   Footer Divider
+   ============================================ */
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-neutral-700) 10%,
+    var(--color-neutral-700) 90%,
+    transparent
+  );
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+/* ============================================
+   Footer Bottom Section
+   ============================================ */
+.footer-bottom {
+  padding-top: 0;
+}
+
+.footer-bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer-copyright {
+  color: var(--color-neutral-400);
+  font-size: var(--font-size-sm);
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+/* ============================================
+   Footer Legal Links
+   ============================================ */
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .footer-legal {
+    justify-content: flex-end;
+  }
+}
+
+.footer-legal a {
+  color: var(--color-neutral-400);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  font-weight: var(--font-weight-normal);
+}
+
+.footer-legal a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-separator {
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-sm);
+  user-select: none;
+}
+
+/* ============================================
+   Mobile Optimizations
+   ============================================ */
+@media (max-width: 767px) {
+  footer[role='contentinfo'] {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  .footer-content {
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+  }
+
+  .footer-section h4 {
+    font-size: var(--font-size-base);
+  }
+
+  .footer-section p,
+  .footer-section a,
+  .footer-services ul li {
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-about p {
+    max-width: 100%;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-base);
+  }
+
+  .footer-divider {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .footer-legal {
+    font-size: var(--font-size-xs);
+  }
+
+  .footer-separator {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ============================================
+   Accessibility Enhancements
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .social-link,
+  .footer-section a,
+  .footer-links a::before {
+    transition: none;
+  }
+
+  .social-link:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  footer[role='contentinfo'] {
+    border-top-width: 2px;
+  }
+
+  .footer-section a {
+    text-decoration: underline;
+  }
+
+  .footer-divider {
+    height: 2px;
+    background: var(--color-neutral-700);
+  }
+
+  .social-link {
+    border-width: 2px;
+  }
+}
+
+/* ============================================
+   Print Optimizations
+   ============================================ */
+@media print {
+  footer[role='contentinfo'] {
+    background-color: transparent !important;
+    color: black !important;
+    border-top: 2px solid black;
+    padding: 1rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer-social,
+  .footer-legal {
+    display: none !important;
+  }
+
+  .footer-section h4 {
+    color: black !important;
+  }
+
+  .footer-section p,
+  .footer-section a,
+  .footer-contact-item {
+    color: black !important;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+}

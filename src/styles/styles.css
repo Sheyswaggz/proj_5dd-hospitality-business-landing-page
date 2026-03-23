@@ -39,6 +39,9 @@
 /* Animation Styles - Interactions and Transitions */
 @import './animations.css';
 
+/* Footer Styles - Navigation, social media, and legal links */
+@import './footer.css';
+
 /* ============================================
    Global Overrides & Utilities
    ============================================
