@@ -8,6 +8,7 @@ import initHero from './hero.js';
 import initServices from './services.js';
 import initScrollAnimations from './scroll-animations.js';
 import initBusinessInfo from './business-info.js';
+import initFooter from './footer.js';
 
 /**
  * Initialize application
@@ -23,6 +24,9 @@ function initApp() {
 
   // Initialize business information section functionality
   initBusinessInfo();
+
+  // Initialize footer functionality
+  initFooter();
 
   // Initialize scroll-triggered reveal animations
   initScrollAnimations();
